@@ -1,0 +1,7 @@
+<p>foo works!</p>
+
+<button (click)="fooClick()">foo click</button>
+
+<ul>
+  <li *ngFor="let user of users | async">{{ user.id }} {{ user.name }}</li>
+</ul>
