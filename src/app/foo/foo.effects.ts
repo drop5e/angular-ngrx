@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
@@ -25,9 +25,9 @@ export class FooEffects {
   getUsers: Observable<Action> = this.actions.ofType(FooActions.GET_USERS)
     .mergeMap((action: FooActions.GetUsers) =>
         this.http
-            .get('http://localhost:3000/user')
+            .get('http://localhost:3000/users')
             .map((data: User[]) => new FooActions.GetUsersSuccess(data))
-            .catch((error) => of(new FooActions.GetUsersError(error)))
+            .catch((error: HttpErrorResponse) => of(new FooActions.GetUsersError(error)))
     );
 
 }
