@@ -9,6 +9,7 @@ import { FooComponent } from './foo.component';
 
 import { fooReducer } from './foo.reducer';
 import { FooEffects } from './foo.effects';
+import { ModalOverlayComponent } from '../modal-overlay/modal-overlay.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,10 @@ import { FooEffects } from './foo.effects';
     EffectsModule.forRoot([FooEffects]),
     StoreModule.forRoot({ foo: fooReducer })
   ],
-  declarations: [FooComponent],
+  declarations: [
+    FooComponent,
+    ModalOverlayComponent
+  ],
   exports: [FooComponent]
 })
 export class FooModule { }

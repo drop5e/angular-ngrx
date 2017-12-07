@@ -1,2 +1,4 @@
 <p>custom-input works!</p>
-<input type="text" [(ngModel)]="value" (focus)="onFocus($event)" (keydown)="onKeydown($event)">
+<input type="text" [(ngModel)]="value" (focus)="onFocus($event)">
+<button (click)="onCancel()">cancel</button>
+<ng-content></ng-content>

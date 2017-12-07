@@ -16,24 +16,25 @@ interface AppState {
 export class FooComponent implements OnInit {
 
   users: Observable<FooActions.User>;
+  selected: Observable<FooActions.User>;
 
   constructor(private store: Store<AppState>) {
     this.store.dispatch(new FooActions.GetUsers());
-    this.users = store.select('foo');
+    this.users = store.select(state => state.foo.users);
+    this.selected = store.select(state => state.foo.selected);
+    this.deleted = store.select(state => state.foo.deleted);
   }
 
   ngOnInit() {
   }
 
-  private fooClick() {
-    console.log('fooClick')
-    let user = {
-      "id": 3,
-      "name": "Clementine Bauch",
-      "username": "Samantha",
-      "email": "Nathan@yesenia.net"
-    };
-    this.store.dispatch(new FooActions.AddUser(user));
+  selectUser(user) {
+    this.store.dispatch(new FooActions.SelectUser(user));
+  }
+
+  deleteUser(user) {
+    console.log('delete: ', user)
+    this.store.dispatch(new FooActions.DeleteUser(user));
   }
 
 }

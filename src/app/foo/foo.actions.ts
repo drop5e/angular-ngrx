@@ -13,6 +13,8 @@ export const GET_USERS_SUCCESS = '[User] Get Success';
 export const GET_USERS_ERROR = '[User] Get Error';
 
 export const ADD_USER = '[User] Add';
+export const SELECT_USER = '[User] Select';
+export const DELETE_USER = '[User] Delete';
 
 export class GetUsers implements Action {
     readonly type = GET_USERS;
@@ -33,4 +35,14 @@ export class AddUser implements Action {
     constructor(public payload: User) {}
 }
 
-export type All = GetUsers | GetUsersSuccess | GetUsersError | AddUser;
+export class SelectUser implements Action {
+    readonly type = SELECT_USER;
+    constructor(public payload: User) {}
+}
+
+export class DeleteUser implements Action {
+    readonly type = DELETE_USER;
+    constructor(public payload: User) {}
+}
+
+export type All = GetUsers | GetUsersSuccess | GetUsersError | AddUser | SelectUser | DeleteUser;

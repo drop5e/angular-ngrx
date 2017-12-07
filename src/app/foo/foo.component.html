@@ -1,7 +1,10 @@
 <p>foo works!</p>
 
-<button (click)="fooClick()">foo click</button>
-
 <ul>
-  <li *ngFor="let user of users | async">{{ user.id }} {{ user.name }}</li>
+  <li *ngFor="let user of users | async" (click)="selectUser(user)">{{ user.id }} {{ user.name }}</li>
 </ul>
+
+<h1>selected: {{ (selected | async)?.name }}</h1>
+<h1>deleted: {{ (deleted | async)?.name }}</h1>
+
+<modal-overlay [user]="selected | async" (deleteEvent)="deleteUser($event)"></modal-overlay>

@@ -15,8 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CustomInputComponent implements ControlValueAccessor {
 
-  @Input() disabled = false;
-  private innerValue: any = '';
+  private innerValue: string;
   private cancelValue: string;
 
   get value() {
@@ -44,12 +43,12 @@ export class CustomInputComponent implements ControlValueAccessor {
     if (value !== this.value) this.value = value;
   }
 
-  onKeydown(event) {
-    if (27 === event.which) this.value = this.cancelValue;
-  }
-
   onFocus(event) {
     this.cancelValue = event.target.value;
+  }
+
+  onCancel() {
+    this.value = this.cancelValue;
   }
 
 }

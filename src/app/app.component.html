@@ -3,7 +3,9 @@
 </div>
 <app-foo></app-foo>
 <form [formGroup]="form" novalidate>
-  <custom-input formControlName="input"></custom-input>
+  <custom-input formControlName="input">
+    <button (click)="cancel()">ng content cnacel</button>
+  </custom-input>
   {{ form.valid }}
 </form>
 <custom-input-template></custom-input-template>

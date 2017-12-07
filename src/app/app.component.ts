@@ -8,14 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AppComponent {
   title = 'app';
   value = 'test';
-  form;
+  form: FormGroup;
   constructor(fb: FormBuilder) {
     this.form = fb.group({
       input: [ this.value, Validators.required ]
     });
   }
-  private test(value) {
-    console.log(value)
-    console.log(this.form.valid)
+  private cancel() {
+    this.form.get('input').setValue('ttt')
   }
 }
